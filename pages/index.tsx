@@ -1,4 +1,13 @@
-import { Box, Center, Flex, Heading, HStack, Stack } from "@chakra-ui/layout";
+import {
+  Box,
+  Center,
+  Flex,
+  Heading,
+  HStack,
+  SimpleGrid,
+  Stack,
+  Text,
+} from "@chakra-ui/layout";
 import { chakra } from "@chakra-ui/system";
 import type { NextPage } from "next";
 import Head from "next/head";
@@ -8,6 +17,8 @@ import styles from "../styles/Home.module.css";
 import { useScrollValue } from "scrollex";
 import { clamp } from "../utils";
 import { useTransform } from "framer-motion";
+import InfiniteBanner from "../components/InfiniteBanner";
+import { useScrollClock } from "../hooks";
 
 const useSectionProgress = () => {
   return useScrollValue(({ position, section, container }) => {
@@ -18,7 +29,7 @@ const useSectionProgress = () => {
   });
 };
 
-const Img = chakra(Image);
+const ChakraInfiniteBanner = chakra(InfiniteBanner);
 const ScrollContainer = chakra(Scroll.Container);
 const ScrollSection = chakra(Scroll.Section);
 const ScrollItem = chakra(Scroll.Item);
@@ -60,15 +71,21 @@ const Home: NextPage = () => {
             </Box>
 
             <HStack>
-              <Heading size="md">Web3</Heading>
+              <Heading size="md" fontFamily="heading">
+                Web3
+              </Heading>
               <Box flex={1} alignSelf="center" h="1px" bg="white" />
-              <Heading size="md">Developer</Heading>
+              <Heading size="md" fontFamily="heading">
+                Developer
+              </Heading>
             </HStack>
           </Stack>
         </Center>
       </ScrollSection>
       <SectionHeading heading="ABOUT ME" />
-      <ScrollSection h="300vh"></ScrollSection>
+      <ScrollSection>
+        <AboutContent />
+      </ScrollSection>
       <SectionHeading heading="PROJECTS" />
       <ScrollSection h="300vh"></ScrollSection>
     </ScrollContainer>
@@ -90,6 +107,79 @@ const SectionHeading = ({ heading }: any) => {
         </ScrollItem>
       </Flex>
     </ScrollSection>
+  );
+};
+
+const AboutContent = () => {
+  const clock = useScrollClock({ scrollAccelerationFactor: 15 });
+
+  return (
+    <SimpleGrid columns={2}>
+      <Box p="3xl" mr="6">
+        <Text size="md" mb="2xl">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
+          tristique mattis tellus, quis porttitor lacus rhoncus eu. Pellentesque
+          habitant morbi tristique senectus et netus et malesuada fames ac
+          turpis egestas. Maecenas non libero vel lacus rutrum ultricies quis
+          pretium lectus. Duis volutpat metus ut aliquam dapibus. Phasellus
+          finibus iaculis urna quis porttitor. Maecenas fermentum tristique
+          metus eu vulputate. Sed vel tortor non dolor molestie tempor et nec
+          purus.
+        </Text>
+        <Text size="md" mb="2xl">
+          Phasellus lobortis et mauris eget eleifend. Sed eget ullamcorper
+          felis. Aliquam eu augue ut libero tincidunt efficitur. Proin et lectus
+          eget arcu bibendum aliquet tristique eu dui. Aliquam erat volutpat.
+          Mauris in felis massa. Nunc a eleifend mi, nec hendrerit risus.
+          Curabitur eget feugiat erat. In nec cursus mi.
+        </Text>
+        <Text size="md" mb="2xl">
+          Suspendisse et ex maximus, elementum felis a, convallis elit. Sed
+          placerat turpis ut pretium placerat. Praesent pharetra arcu eget nunc
+          egestas, sed fringilla massa tristique. Donec et enim eget sapien
+          fringilla ultrices. Sed porttitor, metus vel dignissim luctus, nulla
+          massa porta mi, non aliquam lacus eros sagittis neque. Maecenas
+          scelerisque arcu vitae elit dignissim, vitae mollis ex consequat.
+          Suspendisse vitae malesuada sapien. Curabitur rutrum, neque at gravida
+          sodales, lorem metus lacinia turpis, vel laoreet est libero non
+          tortor. Phasellus fermentum egestas commodo.
+        </Text>
+      </Box>
+      <Box pos="sticky" top={0} h="100vh" overflowY="clip">
+        <ChakraInfiniteBanner
+          clock={clock}
+          loopDuration={10000}
+          w="fit-content"
+          pos="absolute"
+          top={0}
+          left={6}
+          transform="rotate(90deg)"
+          transformOrigin="top left"
+          bg="white"
+          color="black"
+        >
+          <Heading size="lg" whiteSpace="nowrap" mr="1ch">
+            TypeScript - Rust - Solidity - Solana - Polygon -
+          </Heading>
+        </ChakraInfiniteBanner>
+        <Center pos="absolute" inset={0}>
+          <Stack>
+            <Box w="400px" h="420px" pos="relative">
+              <Image
+                src="/profile.png"
+                layout="fill"
+                style={{
+                  borderTopLeftRadius: "50%",
+                  borderTopRightRadius: "50%",
+                }}
+                objectFit="cover"
+              />
+            </Box>
+            <Heading size="lg">Avneesh Agarwal</Heading>
+          </Stack>
+        </Center>
+      </Box>
+    </SimpleGrid>
   );
 };
 

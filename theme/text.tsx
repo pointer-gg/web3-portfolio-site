@@ -3,7 +3,7 @@ const FONT_SCALE_MULTIPLIER = 1.5;
 
 export const fonts = {
   heading: `'Major Mono Display', sans-serif`,
-  body: `'Poppins', sans-serif`,
+  body: `'Space Mono', sans-serif`,
 };
 
 export const textStyles = {
@@ -22,7 +22,7 @@ export const textStyles = {
     letterSpacing: "0",
   },
   md: {
-    fontFamily: fonts.heading,
+    fontFamily: fonts.body,
     fontSize: FONT_SCALE_BASE * FONT_SCALE_MULTIPLIER ** 1 + "rem",
     fontWeight: 400,
     lineHeight: "150%",
