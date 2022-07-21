@@ -1,4 +1,4 @@
-import { Box, Center, Heading } from "@chakra-ui/layout";
+import { Box, Center, Flex, Heading, HStack, Stack } from "@chakra-ui/layout";
 import { chakra } from "@chakra-ui/system";
 import type { NextPage } from "next";
 import Head from "next/head";
@@ -18,25 +18,18 @@ const useSectionProgress = () => {
   });
 };
 
+const Img = chakra(Image);
 const ScrollContainer = chakra(Scroll.Container);
 const ScrollSection = chakra(Scroll.Section);
 const ScrollItem = chakra(Scroll.Item);
 
 const keyframes: Record<string, Keyframes> = {
-  background: ({ section }) => ({
+  sectionHeading: ({ section, container }) => ({
     [section.topAt("container-top")]: {
-      translateZ: 0,
+      translateX: "0%",
     },
-    [section.bottomAt("container-top")]: {
-      translateZ: 500,
-    },
-  }),
-  heading: ({ section }) => ({
-    [section.topAt("container-top")]: {
-      translateZ: 0,
-    },
-    [section.bottomAt("container-top")]: {
-      translateZ: 1100,
+    [section.bottomAt("container-bottom") - container.height / 3]: {
+      translateX: "-100%",
     },
   }),
 };
@@ -44,82 +37,59 @@ const keyframes: Record<string, Keyframes> = {
 const Home: NextPage = () => {
   return (
     <ScrollContainer h="100vh">
-      <ScrollSection h="600vh">
-        <IntroSection />
-      </ScrollSection>
-      <ScrollSection
-        pos="relative"
-        h="100vh"
-        zIndex={1}
-        bg="blackAlpha.900"
-        borderTopRightRadius="5rem"
-      >
+      <ScrollSection h="100vh">
         <Center h="100%">
-          <Box
-            pos="relative"
-            width="60vw"
-            height="40vw"
-            rounded="lg"
-            overflow="hidden"
-          >
-            <Image layout="fill" src="/project-1.png" objectFit="cover" />
-            <Heading
-              fontSize="6rem"
-              pos="absolute"
-              bottom={0}
-              textAlign="center"
-              w="100%"
-            >
-              Scrollex
-            </Heading>
-          </Box>
+          <Stack pos="relative">
+            <Box pos="relative" width="400px" height="400px">
+              <Image
+                layout="fill"
+                src="/gradient-sm.webp"
+                style={{
+                  borderTopLeftRadius: "200px",
+                  borderBottomRightRadius: "200px",
+                }}
+              />
+              <Box pos="absolute" top="50%" transform="translateY(-50%)">
+                <Heading ml={-40} size="3xl">
+                  Avneesh
+                </Heading>
+                <Heading ml={-20} size="3xl">
+                  Agarwal
+                </Heading>
+              </Box>
+            </Box>
+
+            <HStack>
+              <Heading size="md">Web3</Heading>
+              <Box flex={1} alignSelf="center" h="1px" bg="white" />
+              <Heading size="md">Developer</Heading>
+            </HStack>
+          </Stack>
         </Center>
       </ScrollSection>
+      <SectionHeading heading="ABOUT ME" />
+      <ScrollSection h="300vh"></ScrollSection>
+      <SectionHeading heading="PROJECTS" />
+      <ScrollSection h="300vh"></ScrollSection>
     </ScrollContainer>
   );
 };
 
-const IntroSection = () => {
-  // const sectionProgress = useSectionProgress();
-  // const filter = useTransform(sectionProgress, (progress) => {
-  //   const blur = (progress || 0) * 50;
-  //   return `blur(${blur}px)`;
-  // });
-
+const SectionHeading = ({ heading }: any) => {
   return (
-    <>
-      <ScrollItem
-        pos="fixed"
-        inset={0}
-        h="100%"
-        w="100%"
-        bg="url(/stellar-death.jpg)"
-        bgSize="cover"
-        bgPosition="center"
-        zIndex={-1}
-        style={{
-          transformPerspective: 1000,
-          // filter,
-          // perspectiveOrigin: "center bottom",
-        }}
-        keyframes={keyframes.background}
-      />
-      <Center pos="sticky" top="0" h="100vh">
+    <ScrollSection h="400vh">
+      <Flex h="100vh" alignItems="center" pos="sticky" top={0}>
         <ScrollItem
-          keyframes={keyframes.heading}
-          style={{
-            transformPerspective: 1000,
-          }}
+          keyframes={keyframes.sectionHeading}
+          pos="relative"
+          left="50%"
         >
-          <Heading fontSize="8rem" fontWeight="black">
-            Avneesh
-          </Heading>
-          <Heading fontSize="4rem" fontWeight="medium">
-            Web3 Developer
+          <Heading size="6xl" whiteSpace="nowrap">
+            {heading}
           </Heading>
         </ScrollItem>
-      </Center>
-    </>
+      </Flex>
+    </ScrollSection>
   );
 };
 

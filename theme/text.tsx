@@ -1,5 +1,5 @@
 const FONT_SCALE_BASE = 1;
-const FONT_SCALE_MULTIPLIER = 1.25;
+const FONT_SCALE_MULTIPLIER = 1.5;
 
 export const fonts = {
   heading: `'Major Mono Display', sans-serif`,
@@ -22,14 +22,14 @@ export const textStyles = {
     letterSpacing: "0",
   },
   md: {
-    fontFamily: fonts.body,
+    fontFamily: fonts.heading,
     fontSize: FONT_SCALE_BASE * FONT_SCALE_MULTIPLIER ** 1 + "rem",
     fontWeight: 400,
     lineHeight: "150%",
     letterSpacing: "0",
   },
   lg: {
-    fontFamily: fonts.body,
+    fontFamily: fonts.heading,
     fontSize: FONT_SCALE_BASE * FONT_SCALE_MULTIPLIER ** 2 + "rem",
     fontWeight: 400,
     lineHeight: "150%",
@@ -66,6 +66,13 @@ export const textStyles = {
   "5xl": {
     fontFamily: fonts.heading,
     fontSize: FONT_SCALE_BASE * FONT_SCALE_MULTIPLIER ** 7 + "rem",
+    fontWeight: 600,
+    lineHeight: "120%",
+    letterSpacing: "0",
+  },
+  "6xl": {
+    fontFamily: fonts.heading,
+    fontSize: FONT_SCALE_BASE * FONT_SCALE_MULTIPLIER ** 8 + "rem",
     fontWeight: 600,
     lineHeight: "120%",
     letterSpacing: "0",
