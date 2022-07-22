@@ -16,9 +16,12 @@ import { Keyframes, Scroll } from "scrollex";
 import styles from "../styles/Home.module.css";
 import { useScrollValue } from "scrollex";
 import { clamp } from "../utils";
-import { useTransform } from "framer-motion";
+import { motion, useTransform } from "framer-motion";
 import InfiniteBanner from "../components/InfiniteBanner";
 import { useScrollClock } from "../hooks";
+import TextReveal from "../components/TextReveal";
+
+const MotionHStack = motion(HStack);
 
 const useSectionProgress = () => {
   return useScrollValue(({ position, section, container }) => {
@@ -48,7 +51,7 @@ const keyframes: Record<string, Keyframes> = {
 const Home: NextPage = () => {
   return (
     <ScrollContainer h="100vh">
-      <ScrollSection h="100vh">
+      <ScrollSection h="100vh" borderBottom="sm">
         <Center h="100%">
           <Stack pos="relative">
             <Box pos="relative" width="400px" height="400px">
@@ -60,41 +63,51 @@ const Home: NextPage = () => {
                   borderBottomRightRadius: "200px",
                 }}
               />
-              <Box pos="absolute" top="50%" transform="translateY(-50%)">
-                <Heading ml={-40} size="3xl">
-                  Avneesh
+              <Box
+                w="46rem"
+                pos="absolute"
+                left="50%"
+                top="50%"
+                transform="translate(-50%, -50%)"
+              >
+                <Heading size="3xl">
+                  <TextReveal text="Kamila" />
                 </Heading>
-                <Heading ml={-20} size="3xl">
-                  Agarwal
+                <Heading size="3xl" textAlign="end">
+                  <TextReveal text="Mendoza" delay={0.2} />
                 </Heading>
               </Box>
             </Box>
 
-            <HStack>
+            <MotionHStack
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6, duration: 0.6 }}
+            >
               <Heading size="md" fontFamily="heading">
                 Web3
               </Heading>
-              <Box flex={1} alignSelf="center" h="1px" bg="white" />
+              <Box flex={1} alignSelf="center" h="1px" bg="whiteAlpha.700" />
               <Heading size="md" fontFamily="heading">
                 Developer
               </Heading>
-            </HStack>
+            </MotionHStack>
           </Stack>
         </Center>
       </ScrollSection>
       <SectionHeading heading="ABOUT ME" />
-      <ScrollSection>
+      <ScrollSection borderBottom="sm">
         <AboutContent />
       </ScrollSection>
       <SectionHeading heading="PROJECTS" />
-      <ScrollSection h="300vh"></ScrollSection>
+      <ScrollSection h="300vh" borderBottom="sm"></ScrollSection>
     </ScrollContainer>
   );
 };
 
 const SectionHeading = ({ heading }: any) => {
   return (
-    <ScrollSection h="400vh">
+    <ScrollSection h="400vh" borderBottom="sm">
       <Flex h="100vh" alignItems="center" pos="sticky" top={0}>
         <ScrollItem
           keyframes={keyframes.sectionHeading}
@@ -158,7 +171,12 @@ const AboutContent = () => {
           bg="white"
           color="black"
         >
-          <Heading size="lg" whiteSpace="nowrap" mr="1ch">
+          <Heading
+            size="lg"
+            whiteSpace="nowrap"
+            mr="1ch"
+            textTransform="lowercase"
+          >
             TypeScript - Rust - Solidity - Solana - Polygon -
           </Heading>
         </ChakraInfiniteBanner>
@@ -175,7 +193,9 @@ const AboutContent = () => {
                 objectFit="cover"
               />
             </Box>
-            <Heading size="lg">Avneesh Agarwal</Heading>
+            <Heading textAlign="center" size="lg">
+              Kamila Mendoza
+            </Heading>
           </Stack>
         </Center>
       </Box>

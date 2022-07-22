@@ -5,11 +5,15 @@ export const styles = {
     html: {
       fontSize: {
         base: "90%",
-        md: "100%"
-      }
+        md: "100%",
+      },
     },
     body: {
-      bgColor: "bg-body"
-    }
-  })
+      bgColor: "bg-body",
+    },
+    "::selection": {
+      background: "white",
+      color: "black",
+    },
+  }),
 };
