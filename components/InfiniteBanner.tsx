@@ -5,19 +5,19 @@ import {
   useMotionTemplate,
   useTransform,
 } from "framer-motion";
+import { useScrollClock } from "../hooks";
 
 interface InfiniteBannerProps extends React.HTMLProps<HTMLDivElement> {
-  clock: MotionValue<number>;
   loopDuration: number;
   children: React.ReactNode;
 }
 
 const InfiniteBanner = ({
-  clock,
   loopDuration = 12000,
   children,
   ...otherProps
 }: InfiniteBannerProps) => {
+  const clock = useScrollClock({ scrollAccelerationFactor: 15 });
   const progress = useTransform(
     clock,
     (time) => (time % loopDuration) / loopDuration

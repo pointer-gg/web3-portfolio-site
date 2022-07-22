@@ -4,7 +4,7 @@ export const styles = {
   global: (props: StyleFunctionProps) => ({
     html: {
       fontSize: {
-        base: "90%",
+        base: "70%",
         md: "100%",
       },
     },

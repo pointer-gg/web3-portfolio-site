@@ -54,13 +54,13 @@ const Home: NextPage = () => {
       <ScrollSection h="100vh" borderBottom="sm">
         <Center h="100%">
           <Stack pos="relative">
-            <Box pos="relative" width="400px" height="400px">
+            <Box pos="relative" width="24rem" height="24rem">
               <Image
                 layout="fill"
                 src="/gradient-sm.webp"
                 style={{
-                  borderTopLeftRadius: "200px",
-                  borderBottomRightRadius: "200px",
+                  borderTopLeftRadius: "12rem",
+                  borderBottomRightRadius: "12rem",
                 }}
               />
               <Box
@@ -100,7 +100,7 @@ const Home: NextPage = () => {
         <AboutContent />
       </ScrollSection>
       <SectionHeading heading="PROJECTS" />
-      <ScrollSection h="300vh" borderBottom="sm"></ScrollSection>
+      <ProjectSection />
     </ScrollContainer>
   );
 };
@@ -124,8 +124,6 @@ const SectionHeading = ({ heading }: any) => {
 };
 
 const AboutContent = () => {
-  const clock = useScrollClock({ scrollAccelerationFactor: 15 });
-
   return (
     <SimpleGrid columns={2}>
       <Box p="3xl" mr="6">
@@ -160,8 +158,7 @@ const AboutContent = () => {
       </Box>
       <Box pos="sticky" top={0} h="100vh" overflowY="clip">
         <ChakraInfiniteBanner
-          clock={clock}
-          loopDuration={10000}
+          loopDuration={12000}
           w="fit-content"
           pos="absolute"
           top={0}
@@ -182,7 +179,7 @@ const AboutContent = () => {
         </ChakraInfiniteBanner>
         <Center pos="absolute" inset={0}>
           <Stack>
-            <Box w="400px" h="420px" pos="relative">
+            <Box w="24rem" h="26rem" pos="relative">
               <Image
                 src="/profile.png"
                 layout="fill"
@@ -200,6 +197,60 @@ const AboutContent = () => {
         </Center>
       </Box>
     </SimpleGrid>
+  );
+};
+
+const ProjectSection = ({ heading }: any) => {
+  return (
+    <ScrollSection borderBottom="sm">
+      <Box h="100vh" pos="relative">
+        <Image
+          layout="fill"
+          src="/decentralized-stackoverflow.webp"
+          style={{ filter: "saturation(0)" }}
+          objectFit="cover"
+        />
+      </Box>
+      <ChakraInfiniteBanner
+        loopDuration={12000}
+        w="100%"
+        bg="white"
+        color="black"
+      >
+        <Heading
+          size="lg"
+          whiteSpace="nowrap"
+          mr="1ch"
+          textTransform="lowercase"
+        >
+          NextJS - TypeScript - Solidity - Ethereum
+        </Heading>
+      </ChakraInfiniteBanner>
+      <Box py="3xl" px="lg">
+        <Box maxW="4xl" m="0 auto">
+          <Heading size="2xl" mb="2xl">
+            Decentralized Stack Overflow
+          </Heading>
+          <Text size="md" mb="2xl">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
+            tristique mattis tellus, quis porttitor lacus rhoncus eu.
+            Pellentesque habitant morbi tristique senectus et netus et malesuada
+            fames ac turpis egestas. Maecenas non libero vel lacus rutrum
+            ultricies quis pretium lectus. Duis volutpat metus ut aliquam
+            dapibus. Phasellus finibus iaculis urna quis porttitor. Maecenas
+            fermentum tristique metus eu vulputate. Sed vel tortor non dolor
+            molestie tempor et nec purus.
+          </Text>
+          <Text size="md" mb="2xl">
+            Phasellus lobortis et mauris eget eleifend. Sed eget ullamcorper
+            felis. Aliquam eu augue ut libero tincidunt efficitur. Proin et
+            lectus eget arcu bibendum aliquet tristique eu dui. Aliquam erat
+            volutpat. Mauris in felis massa. Nunc a eleifend mi, nec hendrerit
+            risus. Curabitur eget feugiat erat. In nec cursus mi.
+          </Text>
+        </Box>
+      </Box>
+    </ScrollSection>
   );
 };
 
