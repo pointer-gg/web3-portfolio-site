@@ -64,17 +64,17 @@ const Home: NextPage = () => {
                 }}
               />
               <Box
-                w="46rem"
+                w="44rem"
                 pos="absolute"
                 left="50%"
                 top="50%"
                 transform="translate(-50%, -50%)"
               >
                 <Heading size="3xl">
-                  <TextReveal text="Kamila" />
+                  <TextReveal delay={0.25} text="Kamila" />
                 </Heading>
                 <Heading size="3xl" textAlign="end">
-                  <TextReveal text="Mendoza" delay={0.2} />
+                  <TextReveal text="Mendoza" delay={0.45} />
                 </Heading>
               </Box>
             </Box>
@@ -82,7 +82,7 @@ const Home: NextPage = () => {
             <MotionHStack
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.6, duration: 0.6 }}
+              transition={{ delay: 0.8, duration: 0.8 }}
             >
               <Heading size="md" fontFamily="heading">
                 Web3
