@@ -57,6 +57,7 @@ const Home: NextPage = () => {
             <Box pos="relative" width="24rem" height="24rem">
               <Image
                 layout="fill"
+                priority
                 src="/gradient-sm.webp"
                 style={{
                   borderTopLeftRadius: "12rem",
@@ -183,6 +184,7 @@ const AboutContent = () => {
               <Image
                 src="/profile.png"
                 layout="fill"
+                priority
                 style={{
                   borderTopLeftRadius: "50%",
                   borderTopRightRadius: "50%",
@@ -206,6 +208,7 @@ const ProjectSection = ({ heading }: any) => {
       <Box h="100vh" pos="relative">
         <Image
           layout="fill"
+          priority
           src="/decentralized-stackoverflow.webp"
           style={{ filter: "saturation(0)" }}
           objectFit="cover"
