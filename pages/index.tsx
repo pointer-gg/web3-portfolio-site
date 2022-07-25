@@ -233,7 +233,7 @@ const ProjectSection = ({ heading }: any) => {
           View Project
         </Button>
       </Flex>
-      <Box py="4xl" px="xl">
+      <Box py="4xl" px="2xl">
         <Box maxW="4xl" m="0 auto">
           <Heading size="2xl" mb="2xl">
             Decentralized Stack Overflow

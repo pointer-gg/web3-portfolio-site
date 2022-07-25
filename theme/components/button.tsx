@@ -1,5 +1,6 @@
 import { mode } from "@chakra-ui/theme-tools";
 import type { SystemStyleFunction } from "@chakra-ui/theme-tools";
+import { Button as ChakraComponent } from "@chakra-ui/react";
 
 const variantSolid: SystemStyleFunction = (props) => {
   const { colorScheme: c } = props;
@@ -12,10 +13,10 @@ const variantSolid: SystemStyleFunction = (props) => {
       _hover: {
         bg: mode(`gray.200`, `whiteAlpha.200`)(props),
         _disabled: {
-          bg
-        }
+          bg,
+        },
       },
-      _active: { bg: mode(`gray.300`, `whiteAlpha.300`)(props) }
+      _active: { bg: mode(`gray.300`, `whiteAlpha.300`)(props) },
     };
   }
 
@@ -39,18 +40,23 @@ const variantSolid: SystemStyleFunction = (props) => {
     _hover: {
       bg: hoverBg,
       _disabled: {
-        bg: disabledBg
-      }
+        bg: disabledBg,
+      },
     },
-    _active: { bg: activeBg }
+    _active: { bg: activeBg },
   };
 };
 
 export const Button = {
   baseStyle: {
-    border: "sm"
+    border: "sm",
   },
   variants: {
-    solid: variantSolid
-  }
+    solid: variantSolid,
+  },
+};
+
+ChakraComponent.defaultProps = {
+  ...ChakraComponent.defaultProps,
+  fontSize: "lg",
 };
