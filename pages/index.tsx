@@ -21,17 +21,11 @@ import InfiniteBanner from "../components/InfiniteBanner";
 import { useScrollClock } from "../hooks";
 import TextReveal from "../components/TextReveal";
 import { Button } from "@chakra-ui/button";
+import gradientImg from "../public/gradient-sm.webp";
+import profileImg from "../public/profile.png";
+import stackOverflowImg from "../public/decentralized-stackoverflow.webp";
 
 const MotionHStack = motion(HStack);
-
-const useSectionProgress = () => {
-  return useScrollValue(({ position, section, container }) => {
-    const sectionPosition = position - section.topAt("container-top");
-    const sectionScrollableHeight = section.height - container.height;
-    const progress = sectionPosition / sectionScrollableHeight;
-    return clamp(progress, 0, 1);
-  });
-};
 
 const ChakraInfiniteBanner = chakra(InfiniteBanner);
 const ScrollContainer = chakra(Scroll.Container);
@@ -57,9 +51,9 @@ const Home: NextPage = () => {
           <Stack pos="relative">
             <Box pos="relative" width="24rem" height="24rem">
               <Image
+                src={gradientImg}
                 layout="fill"
                 priority
-                src="/gradient-sm.webp"
                 style={{
                   borderTopLeftRadius: "12rem",
                   borderBottomRightRadius: "12rem",
@@ -127,8 +121,8 @@ const SectionHeading = ({ heading }: any) => {
 
 const AboutContent = () => {
   return (
-    <SimpleGrid columns={2}>
-      <Box p="3xl" mr="6">
+    <Flex>
+      <Box p="3xl" flex={1}>
         <Text size="md" mb="2xl">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
           tristique mattis tellus, quis porttitor lacus rhoncus eu. Pellentesque
@@ -158,34 +152,29 @@ const AboutContent = () => {
           tortor. Phasellus fermentum egestas commodo.
         </Text>
       </Box>
-      <Box pos="sticky" top={0} h="100vh" overflowY="clip">
+      <Box h="100vh" pos="sticky" top={0} overflow="hidden">
         <ChakraInfiniteBanner
           loopDuration={12000}
-          w="fit-content"
-          pos="absolute"
-          top={0}
-          left={6}
-          transform="rotate(90deg)"
-          transformOrigin="top left"
-          // bg="white"
-          // color="black"
-          borderBottom="sm"
-          borderTop="sm"
+          direction="y"
+          borderLeft="sm"
+          borderRight="sm"
         >
           <Heading
             size="lg"
             whiteSpace="nowrap"
-            mr="1ch"
             textTransform="lowercase"
+            style={{ writingMode: "vertical-rl" }}
           >
-            TypeScript - Rust - Solidity - Solana - Polygon -
+            TypeScript - Rust - Solidity - Solana - Polygon &nbsp;
           </Heading>
         </ChakraInfiniteBanner>
+      </Box>
+      <Box flex={1} pos="sticky" top={0} h="100vh" p="3xl">
         <Center pos="absolute" inset={0}>
           <Stack>
             <Box w="24rem" h="26rem" pos="relative">
               <Image
-                src="/profile.png"
+                src={profileImg}
                 layout="fill"
                 priority
                 style={{
@@ -201,7 +190,7 @@ const AboutContent = () => {
           </Stack>
         </Center>
       </Box>
-    </SimpleGrid>
+    </Flex>
   );
 };
 
@@ -212,7 +201,7 @@ const ProjectSection = ({ heading }: any) => {
         <Image
           layout="fill"
           priority
-          src="/decentralized-stackoverflow.webp"
+          src={stackOverflowImg}
           style={{ filter: "saturation(0)" }}
           objectFit="cover"
         />

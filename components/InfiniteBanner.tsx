@@ -8,12 +8,14 @@ import {
 import { useScrollClock } from "../hooks";
 
 interface InfiniteBannerProps extends React.HTMLProps<HTMLDivElement> {
-  loopDuration: number;
+  loopDuration?: number;
+  direction?: "x" | "y";
   children: React.ReactNode;
 }
 
 const InfiniteBanner = ({
   loopDuration = 12000,
+  direction = "x",
   children,
   ...otherProps
 }: InfiniteBannerProps) => {
@@ -23,7 +25,11 @@ const InfiniteBanner = ({
     (time) => (time % loopDuration) / loopDuration
   );
   const percentage = useTransform(progress, (t) => t * 100);
-  const translateX = useMotionTemplate`-${percentage}%`;
+  const translation = useMotionTemplate`-${percentage}%`;
+  const styleAttr = direction === "y" ? "translateY" : "translateX";
+  const leftOffset = direction === "y" ? 0 : "100%";
+  const topOffset = direction === "y" ? "100%" : 0;
+
   return (
     <div
       {...otherProps}
@@ -34,15 +40,15 @@ const InfiniteBanner = ({
         ...otherProps.style,
       }}
     >
-      <motion.div style={{ translateX }}>
+      <motion.div style={{ [styleAttr]: translation }}>
         <div>{children}</div>
         <div
           style={{
             position: "absolute",
             height: "100%",
             width: "100%",
-            left: "100%",
-            top: 0,
+            left: leftOffset,
+            top: topOffset,
           }}
         >
           {children}
