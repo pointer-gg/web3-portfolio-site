@@ -20,6 +20,7 @@ import { motion, useTransform } from "framer-motion";
 import InfiniteBanner from "../components/InfiniteBanner";
 import { useScrollClock } from "../hooks";
 import TextReveal from "../components/TextReveal";
+import { Button } from "@chakra-ui/button";
 
 const MotionHStack = motion(HStack);
 
@@ -166,8 +167,10 @@ const AboutContent = () => {
           left={6}
           transform="rotate(90deg)"
           transformOrigin="top left"
-          bg="white"
-          color="black"
+          // bg="white"
+          // color="black"
+          borderBottom="sm"
+          borderTop="sm"
         >
           <Heading
             size="lg"
@@ -214,22 +217,34 @@ const ProjectSection = ({ heading }: any) => {
           objectFit="cover"
         />
       </Box>
-      <ChakraInfiniteBanner
-        loopDuration={12000}
-        w="100%"
-        bg="white"
-        color="black"
-      >
-        <Heading
-          size="lg"
-          whiteSpace="nowrap"
-          mr="1ch"
-          textTransform="lowercase"
-        >
-          NextJS - TypeScript - Solidity - Ethereum
-        </Heading>
-      </ChakraInfiniteBanner>
-      <Box py="3xl" px="lg">
+      <Flex borderBottom="sm" h="12">
+        <Center px="md" h="100%" borderRight="sm">
+          <Heading size="md" fontFamily="heading">
+            Built With
+          </Heading>
+        </Center>
+        <Center flex={1} overflow="hidden">
+          <ChakraInfiniteBanner
+            minW="min-content"
+            w="100%"
+            loopDuration={12000}
+            whiteSpace="nowrap"
+          >
+            <Heading
+              size="md"
+              mr="3ch"
+              textTransform="lowercase"
+              fontFamily="heading"
+            >
+              NextJS - TypeScript - Solidity - Ethereum
+            </Heading>
+          </ChakraInfiniteBanner>
+        </Center>
+        <Button h="100%" borderRadius={0} borderY="none">
+          View Project
+        </Button>
+      </Flex>
+      <Box py="4xl" px="xl">
         <Box maxW="4xl" m="0 auto">
           <Heading size="2xl" mb="2xl">
             Decentralized Stack Overflow
