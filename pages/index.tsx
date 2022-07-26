@@ -21,6 +21,7 @@ import gradientImg from "../public/gradient-sm.webp";
 import profileImg from "../public/profile.png";
 import stackOverflowImg from "../public/decentralized-stackoverflow.webp";
 import { Input } from "@chakra-ui/react";
+import SparkleIcon from "../components/SparkleIcon";
 
 const MotionHStack = motion(HStack);
 
@@ -38,6 +39,14 @@ const keyframes: Record<string, Keyframes> = {
       translateX: "-100%",
     },
   }),
+  profileImg: ({ section }) => ({
+    [section.topAt("container-bottom")]: {
+      scale: 1.15,
+    },
+    [section.bottomAt("container-top")]: {
+      scale: 1,
+    },
+  }),
 };
 
 const Home: NextPage = () => {
@@ -45,7 +54,7 @@ const Home: NextPage = () => {
     <ScrollContainer h="100vh">
       <ScrollSection h="100vh" borderBottom="sm">
         <Center h="100%">
-          <Stack pos="relative">
+          <Stack transform={{ base: "scale(0.75)", md: "none" }}>
             <Box pos="relative" width="24rem" height="24rem">
               <Image
                 src={gradientImg}
@@ -161,26 +170,48 @@ const AboutContent = () => {
             size="lg"
             whiteSpace="nowrap"
             textTransform="lowercase"
-            style={{ writingMode: "vertical-rl" }}
+            style={{ writingMode: "vertical-rl", textOrientation: "mixed" }}
           >
-            TypeScript - Rust - Solidity - Solana - Polygon &nbsp;
+            TypeScript <SparkleIcon /> Rust <SparkleIcon /> Solidity{" "}
+            <SparkleIcon /> Solana <SparkleIcon /> Polygon &nbsp;
           </Heading>
         </ChakraInfiniteBanner>
       </Box>
-      <Box flex={1} pos="sticky" top={0} h="100vh" p="3xl">
+      <Box
+        flex={1}
+        pos="sticky"
+        top={0}
+        h="100vh"
+        p="3xl"
+        display={{ base: "none", md: "block" }}
+      >
         <Center pos="absolute" inset={0}>
           <Stack>
-            <Box w="24rem" h="26rem" pos="relative">
-              <Image
-                src={profileImg}
-                layout="fill"
-                priority
-                style={{
-                  borderTopLeftRadius: "50%",
-                  borderTopRightRadius: "50%",
-                }}
-                objectFit="cover"
-              />
+            <Box
+              w="24rem"
+              h="26rem"
+              style={{
+                borderTopLeftRadius: "50%",
+                borderTopRightRadius: "50%",
+              }}
+              overflow="clip"
+            >
+              <ScrollItem
+                keyframes={keyframes.profileImg}
+                h="100%"
+                pos="relative"
+              >
+                <Image
+                  src={profileImg}
+                  layout="fill"
+                  priority
+                  // style={{
+                  //   borderTopLeftRadius: "50%",
+                  //   borderTopRightRadius: "50%",
+                  // }}
+                  objectFit="cover"
+                />
+              </ScrollItem>
             </Box>
             <Heading textAlign="center" size="lg">
               Kamila Mendoza
@@ -218,7 +249,8 @@ const ProjectSection = ({ heading }: any) => {
             whiteSpace="nowrap"
           >
             <Heading size="md" mr="3ch" textTransform="lowercase">
-              NextJS - TypeScript - Solidity - Ethereum
+              NextJS <SparkleIcon /> TypeScript <SparkleIcon /> Solidity{" "}
+              <SparkleIcon /> Ethereum
             </Heading>
           </ChakraInfiniteBanner>
         </Center>
