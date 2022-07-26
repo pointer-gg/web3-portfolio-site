@@ -165,6 +165,7 @@ const AboutContent = () => {
           direction="y"
           borderLeft="sm"
           borderRight="sm"
+          minW="max-content"
         >
           <Heading
             size="lg"
@@ -194,7 +195,7 @@ const AboutContent = () => {
                 borderTopLeftRadius: "50%",
                 borderTopRightRadius: "50%",
               }}
-              overflow="clip"
+              overflow="hidden"
             >
               <ScrollItem
                 keyframes={keyframes.profileImg}
