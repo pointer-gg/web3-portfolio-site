@@ -3,6 +3,7 @@ import {
   motion,
   MotionValue,
   useMotionTemplate,
+  useSpring,
   useTransform,
 } from "framer-motion";
 import { useScrollClock } from "../hooks";

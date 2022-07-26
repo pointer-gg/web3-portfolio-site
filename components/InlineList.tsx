@@ -8,16 +8,14 @@ const InlineList = ({ items }: InlineListProps) => {
   return (
     <span>
       {items.map((item, i) => (
-        <>
+        <span key={item}>
           <span>{item}</span>
-          {i < items.length - 1 && (
-            <span>
-              &nbsp;&nbsp;
-              <SparkleIcon />
-              &nbsp;&nbsp;
-            </span>
-          )}
-        </>
+          <span>
+            &nbsp;
+            <SparkleIcon />
+            &nbsp;
+          </span>
+        </span>
       ))}
     </span>
   );

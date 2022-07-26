@@ -16,12 +16,10 @@ import { Keyframes, Scroll } from "scrollex";
 import { motion, useTransform } from "framer-motion";
 import InfiniteBanner from "../components/InfiniteBanner";
 import TextReveal from "../components/TextReveal";
+import InlineList from "../components/InlineList";
 import { Button } from "@chakra-ui/button";
 import gradientImg from "../public/gradient-sm.webp";
-import profileImg from "../public/profile.png";
-import stackOverflowImg from "../public/decentralized-stackoverflow.webp";
 import { portfolio } from "../data";
-import InlineList from "../components/InlineList";
 
 const MotionHStack = motion(HStack);
 
@@ -37,14 +35,6 @@ const keyframes: Record<string, Keyframes> = {
     },
     [section.bottomAt("container-bottom") - container.height / 3]: {
       translateX: "-100%",
-    },
-  }),
-  profileImg: ({ section }) => ({
-    [section.topAt("container-bottom")]: {
-      scale: 1.15,
-    },
-    [section.bottomAt("container-top")]: {
-      scale: 1,
     },
   }),
 };
@@ -73,10 +63,10 @@ const Home: NextPage = () => {
                 transform="translate(-50%, -50%)"
               >
                 <Heading size="3xl">
-                  <TextReveal delay={0.25} text="Kamila" />
+                  <TextReveal text={portfolio.about.firstName} delay={0.25} />
                 </Heading>
                 <Heading size="3xl" textAlign="end">
-                  <TextReveal text="Mendoza" delay={0.45} />
+                  <TextReveal text={portfolio.about.lastName} delay={0.45} />
                 </Heading>
               </Box>
             </Box>
@@ -103,7 +93,9 @@ const Home: NextPage = () => {
         <AboutContent />
       </ScrollSection>
       <SectionHeading heading="PROJECTS" />
-      <ProjectSection project={portfolio.projects[0]} />
+      {portfolio.projects.map((project) => (
+        <ProjectSection key={project.name} project={project} />
+      ))}
     </ScrollContainer>
   );
 };
@@ -163,6 +155,7 @@ const AboutContent = () => {
         <Center pos="absolute" inset={0}>
           <Stack>
             <Box
+              pos="relative"
               w="24rem"
               h="26rem"
               style={{
@@ -171,21 +164,15 @@ const AboutContent = () => {
               }}
               overflow="hidden"
             >
-              <ScrollItem
-                keyframes={keyframes.profileImg}
-                h="100%"
-                pos="relative"
-              >
-                <Image
-                  src={profileImg}
-                  layout="fill"
-                  priority
-                  objectFit="cover"
-                />
-              </ScrollItem>
+              <Image
+                src={portfolio.about.img}
+                layout="fill"
+                priority
+                objectFit="cover"
+              />
             </Box>
             <Heading textAlign="center" size="lg">
-              Kamila Mendoza
+              {portfolio.about.firstName} {portfolio.about.lastName}
             </Heading>
           </Stack>
         </Center>
@@ -198,13 +185,7 @@ const ProjectSection = ({ project }: any) => {
   return (
     <ScrollSection borderBottom="sm">
       <Box h="100vh" pos="relative">
-        <Image
-          layout="fill"
-          priority
-          src={stackOverflowImg}
-          style={{ filter: "saturation(0)" }}
-          objectFit="cover"
-        />
+        <Image layout="fill" priority src={project.img} objectFit="cover" />
       </Box>
       <Flex borderBottom="sm" h="12">
         <Center px="md" h="100%" borderRight="sm">
