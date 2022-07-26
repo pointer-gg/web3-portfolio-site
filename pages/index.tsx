@@ -20,8 +20,8 @@ import { Button } from "@chakra-ui/button";
 import gradientImg from "../public/gradient-sm.webp";
 import profileImg from "../public/profile.png";
 import stackOverflowImg from "../public/decentralized-stackoverflow.webp";
-import { Input } from "@chakra-ui/react";
-import SparkleIcon from "../components/SparkleIcon";
+import { portfolio } from "../data";
+import InlineList from "../components/InlineList";
 
 const MotionHStack = motion(HStack);
 
@@ -103,7 +103,7 @@ const Home: NextPage = () => {
         <AboutContent />
       </ScrollSection>
       <SectionHeading heading="PROJECTS" />
-      <ProjectSection />
+      <ProjectSection project={portfolio.projects[0]} />
     </ScrollContainer>
   );
 };
@@ -130,33 +130,8 @@ const AboutContent = () => {
   return (
     <Flex>
       <Box p="3xl" flex={1}>
-        <Text size="md" mb="2xl">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
-          tristique mattis tellus, quis porttitor lacus rhoncus eu. Pellentesque
-          habitant morbi tristique senectus et netus et malesuada fames ac
-          turpis egestas. Maecenas non libero vel lacus rutrum ultricies quis
-          pretium lectus. Duis volutpat metus ut aliquam dapibus. Phasellus
-          finibus iaculis urna quis porttitor. Maecenas fermentum tristique
-          metus eu vulputate. Sed vel tortor non dolor molestie tempor et nec
-          purus.
-        </Text>
-        <Text size="md" mb="2xl">
-          Phasellus lobortis et mauris eget eleifend. Sed eget ullamcorper
-          felis. Aliquam eu augue ut libero tincidunt efficitur. Proin et lectus
-          eget arcu bibendum aliquet tristique eu dui. Aliquam erat volutpat.
-          Mauris in felis massa. Nunc a eleifend mi, nec hendrerit risus.
-          Curabitur eget feugiat erat. In nec cursus mi.
-        </Text>
-        <Text size="md" mb="2xl">
-          Suspendisse et ex maximus, elementum felis a, convallis elit. Sed
-          placerat turpis ut pretium placerat. Praesent pharetra arcu eget nunc
-          egestas, sed fringilla massa tristique. Donec et enim eget sapien
-          fringilla ultrices. Sed porttitor, metus vel dignissim luctus, nulla
-          massa porta mi, non aliquam lacus eros sagittis neque. Maecenas
-          scelerisque arcu vitae elit dignissim, vitae mollis ex consequat.
-          Suspendisse vitae malesuada sapien. Curabitur rutrum, neque at gravida
-          sodales, lorem metus lacinia turpis, vel laoreet est libero non
-          tortor. Phasellus fermentum egestas commodo.
+        <Text whiteSpace="pre-wrap" size="md" mb="2xl">
+          {portfolio.about.bio}
         </Text>
       </Box>
       <Box h="100vh" pos="sticky" top={0} overflow="hidden">
@@ -165,16 +140,15 @@ const AboutContent = () => {
           direction="y"
           borderLeft="sm"
           borderRight="sm"
-          minW="max-content"
         >
           <Heading
             size="lg"
             whiteSpace="nowrap"
             textTransform="lowercase"
-            style={{ writingMode: "vertical-rl", textOrientation: "mixed" }}
+            w={14}
+            style={{ writingMode: "vertical-rl" }}
           >
-            TypeScript <SparkleIcon /> Rust <SparkleIcon /> Solidity{" "}
-            <SparkleIcon /> Solana <SparkleIcon /> Polygon &nbsp;
+            <InlineList items={portfolio.about.skills} />
           </Heading>
         </ChakraInfiniteBanner>
       </Box>
@@ -206,10 +180,6 @@ const AboutContent = () => {
                   src={profileImg}
                   layout="fill"
                   priority
-                  // style={{
-                  //   borderTopLeftRadius: "50%",
-                  //   borderTopRightRadius: "50%",
-                  // }}
                   objectFit="cover"
                 />
               </ScrollItem>
@@ -224,7 +194,7 @@ const AboutContent = () => {
   );
 };
 
-const ProjectSection = ({ heading }: any) => {
+const ProjectSection = ({ project }: any) => {
   return (
     <ScrollSection borderBottom="sm">
       <Box h="100vh" pos="relative">
@@ -250,8 +220,7 @@ const ProjectSection = ({ heading }: any) => {
             whiteSpace="nowrap"
           >
             <Heading size="md" mr="3ch" textTransform="lowercase">
-              NextJS <SparkleIcon /> TypeScript <SparkleIcon /> Solidity{" "}
-              <SparkleIcon /> Ethereum
+              <InlineList items={project.tools} />
             </Heading>
           </ChakraInfiniteBanner>
         </Center>
@@ -262,7 +231,7 @@ const ProjectSection = ({ heading }: any) => {
       <Box py="4xl" px="2xl">
         <Box maxW="4xl" m="0 auto">
           <Heading size="2xl" mb="2xl">
-            Decentralized Stack Overflow
+            {project.name}
           </Heading>
           <Text size="md" mb="2xl">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
