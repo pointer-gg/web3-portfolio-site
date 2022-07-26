@@ -13,17 +13,14 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import { Keyframes, Scroll } from "scrollex";
-import styles from "../styles/Home.module.css";
-import { useScrollValue } from "scrollex";
-import { clamp } from "../utils";
 import { motion, useTransform } from "framer-motion";
 import InfiniteBanner from "../components/InfiniteBanner";
-import { useScrollClock } from "../hooks";
 import TextReveal from "../components/TextReveal";
 import { Button } from "@chakra-ui/button";
 import gradientImg from "../public/gradient-sm.webp";
 import profileImg from "../public/profile.png";
 import stackOverflowImg from "../public/decentralized-stackoverflow.webp";
+import { Input } from "@chakra-ui/react";
 
 const MotionHStack = motion(HStack);
 
@@ -80,13 +77,14 @@ const Home: NextPage = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8, duration: 0.8 }}
             >
-              <Heading size="md" fontFamily="heading">
-                Web3
-              </Heading>
-              <Box flex={1} alignSelf="center" h="1px" bg="whiteAlpha.700" />
-              <Heading size="md" fontFamily="heading">
-                Developer
-              </Heading>
+              <Heading size="md">Web3</Heading>
+              <Box
+                flex={1}
+                alignSelf="center"
+                h="1px"
+                bg="border-contrast-xl"
+              />
+              <Heading size="md">Developer</Heading>
             </MotionHStack>
           </Stack>
         </Center>
@@ -208,28 +206,23 @@ const ProjectSection = ({ heading }: any) => {
       </Box>
       <Flex borderBottom="sm" h="12">
         <Center px="md" h="100%" borderRight="sm">
-          <Heading size="md" fontFamily="heading">
+          <Heading size="md" fontWeight="bold">
             Built With
           </Heading>
         </Center>
         <Center flex={1} overflow="hidden">
           <ChakraInfiniteBanner
-            minW="min-content"
+            minW="max-content"
             w="100%"
             loopDuration={12000}
             whiteSpace="nowrap"
           >
-            <Heading
-              size="md"
-              mr="3ch"
-              textTransform="lowercase"
-              fontFamily="heading"
-            >
+            <Heading size="md" mr="3ch" textTransform="lowercase">
               NextJS - TypeScript - Solidity - Ethereum
             </Heading>
           </ChakraInfiniteBanner>
         </Center>
-        <Button h="100%" borderRadius={0} borderY="none">
+        <Button h="100%" borderY="none" borderRight="none">
           View Project
         </Button>
       </Flex>

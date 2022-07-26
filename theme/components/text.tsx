@@ -1,5 +1,9 @@
-import { textStyles } from "../text";
+import { fonts, textStyles } from "../text";
+import { theme } from "@chakra-ui/react";
 
 export const Text = {
-  sizes: textStyles
+  baseStyle: {
+    fontFamily: fonts.body,
+  },
+  sizes: textStyles,
 };

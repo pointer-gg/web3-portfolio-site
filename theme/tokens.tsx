@@ -9,9 +9,9 @@ export const semanticTokens = {
       default: "white",
       _dark: "gray.900",
     },
-    "bg-card": {
-      default: "#f2f2f2",
-      _dark: "#1C1C1C",
+    "bg-body-inverse": {
+      default: "gray.900",
+      _dark: "white",
     },
     "bg-contrast-xs": {
       default: "rgba(0, 0, 0, 0.025)",
@@ -74,8 +74,8 @@ export const semanticTokens = {
       _dark: "rgba(255, 255, 255, 0.5)",
     },
     "focus-ring": {
-      default: "purple.200",
-      _dark: "purple.200",
+      default: "black",
+      _dark: "white",
     },
   },
   space: {

@@ -7,7 +7,7 @@ import { components } from "./components";
 
 const config = {
   initialColorMode: "dark",
-  useSystemColorMode: false
+  useSystemColorMode: false,
 };
 
 export const theme = extendTheme({
@@ -16,14 +16,7 @@ export const theme = extendTheme({
   styles,
   colors,
   textStyles,
-  layerStyles: {
-    card: {
-      bgColor: "bg-contrast-sm",
-      border: "sm",
-      rounded: "md"
-    }
-  },
   semanticTokens,
   shadows: { outline: "0 0 0 3px var(--chakra-colors-focus-ring)" },
-  components
+  components,
 }) as Theme;

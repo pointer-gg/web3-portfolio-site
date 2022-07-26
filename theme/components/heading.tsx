@@ -1,5 +1,8 @@
-import { textStyles } from "../text";
+import { fonts, textStyles } from "../text";
 
 export const Heading = {
-  sizes: textStyles
+  baseStyle: {
+    fontFamily: fonts.heading,
+  },
+  sizes: textStyles,
 };

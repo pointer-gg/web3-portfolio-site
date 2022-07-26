@@ -2,22 +2,29 @@ import { Input as ChakraComponent } from "@chakra-ui/react";
 
 ChakraComponent.defaultProps = {
   ...ChakraComponent.defaultProps,
-  focusBorderColor: "purple.200",
-  variant: "filled"
+  focusBorderColor: "white",
+  variant: "outline",
+  rounded: "none",
 };
 
 export const Input = {
   variants: {
-    filled: {
+    outline: {
       field: {
-        bg: "bg-contrast-sm",
+        bg: "transparent",
+        border: "sm",
+        color: "text-contrast-md",
+
         _hover: {
-          bg: "bg-contrast-md"
+          border: "sm",
         },
         _disabled: {
-          bg: "bg-contrast-sm"
-        }
-      }
-    }
-  }
+          border: "sm",
+        },
+        _placeholder: {
+          color: "text-contrast-sm",
+        },
+      },
+    },
+  },
 };

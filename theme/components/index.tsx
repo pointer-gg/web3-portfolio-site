@@ -4,8 +4,6 @@ import { Text } from "./text";
 import { HStack } from "./hstack";
 import { Stack } from "./stack";
 import { Input } from "./input";
-import { Textarea } from "./textarea";
-import { Select } from "./select";
 
 export const components = {
   Button,
@@ -14,6 +12,4 @@ export const components = {
   Stack,
   Text,
   Input,
-  Textarea,
-  Select
 };
