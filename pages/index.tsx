@@ -4,7 +4,6 @@ import {
   Flex,
   Heading,
   HStack,
-  SimpleGrid,
   Stack,
   Text,
 } from "@chakra-ui/layout";
@@ -82,7 +81,7 @@ const GradientImg = () => {
 
 const Home: NextPage = () => {
   return (
-    <ScrollContainer h="100vh">
+    <ScrollContainer h="h-screen">
       <ScrollSection h="h-screen" borderBottom="sm">
         <Center h="100%">
           <Stack transform={{ base: "scale(0.75)", md: "none" }}>

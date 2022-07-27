@@ -1,4 +1,4 @@
-import { extendTheme, Theme } from "@chakra-ui/react";
+import { extendTheme } from "@chakra-ui/react";
 import { styles } from "./styles";
 import { textStyles, fonts } from "./text";
 import { semanticTokens } from "./tokens";
@@ -19,4 +19,4 @@ export const theme = extendTheme({
   semanticTokens,
   shadows: { outline: "0 0 0 3px var(--chakra-colors-focus-ring)" },
   components,
-}) as Theme;
+});
