@@ -16,10 +16,10 @@ import { motion, useSpring, useTransform } from "framer-motion";
 import Ticker from "../components/Ticker";
 import TextReveal from "../components/TextReveal";
 import InlineList from "../components/InlineList";
-import { Button } from "@chakra-ui/button";
 import gradientImg from "../public/gradient-sm.webp";
 import { portfolio } from "../data";
 import { useScrollClock } from "../hooks";
+import LinkButton from "../components/LinkButton";
 
 const MotionHStack = motion(HStack);
 const MotionBox = motion(Box);
@@ -238,9 +238,15 @@ const ProjectSection = ({ project }: any) => {
             </Heading>
           </ChakraTicker>
         </Center>
-        <Button h="100%" borderY="none" borderRight="none">
+        <LinkButton
+          href="https://pointer.gg"
+          h="100%"
+          borderY="none"
+          borderRight="none"
+          newTab
+        >
           View Project
-        </Button>
+        </LinkButton>
       </Flex>
       <Box py="4xl" px="2xl">
         <Box maxW="4xl" m="0 auto">

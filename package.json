@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predev": "npx @chakra-ui/cli tokens ./theme/index.tsx",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
