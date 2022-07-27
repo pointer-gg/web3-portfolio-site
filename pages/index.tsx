@@ -64,6 +64,7 @@ const GradientImg = () => {
       borderTopLeftRadius="12rem"
       borderBottomRightRadius="12rem"
       overflow="hidden"
+      willChange="contents"
     >
       <MotionBox
         h="100%"
