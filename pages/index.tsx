@@ -13,17 +13,19 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import { Keyframes, Scroll } from "scrollex";
-import { motion, useTransform } from "framer-motion";
-import InfiniteBanner from "../components/InfiniteBanner";
+import { motion, useSpring, useTransform } from "framer-motion";
+import Ticker from "../components/Ticker";
 import TextReveal from "../components/TextReveal";
 import InlineList from "../components/InlineList";
 import { Button } from "@chakra-ui/button";
 import gradientImg from "../public/gradient-sm.webp";
 import { portfolio } from "../data";
+import { useScrollClock } from "../hooks";
 
 const MotionHStack = motion(HStack);
+const MotionBox = motion(Box);
 
-const ChakraInfiniteBanner = chakra(InfiniteBanner);
+const ChakraTicker = chakra(Ticker);
 const ScrollContainer = chakra(Scroll.Container);
 const ScrollSection = chakra(Scroll.Section);
 const ScrollItem = chakra(Scroll.Item);
@@ -37,24 +39,55 @@ const keyframes: Record<string, Keyframes> = {
       translateX: "-100%",
     },
   }),
+  gradientImg: ({ section, container }) => ({
+    [section.topAt("container-top")]: {
+      rotateZ: "0deg",
+    },
+    [section.bottomAt("container-top")]: {
+      rotateZ: "60deg",
+    },
+  }),
+};
+
+const GradientImg = () => {
+  const clock = useScrollClock({ scrollAccelerationFactor: 20 });
+  const rotate = useTransform(clock, (time) => time / 100);
+  const spring = useSpring(rotate, {
+    mass: 0.01,
+    stiffness: 100,
+    damping: 7.5,
+  });
+  return (
+    <Box
+      pos="relative"
+      h="100%"
+      w="100%"
+      borderTopLeftRadius="12rem"
+      borderBottomRightRadius="12rem"
+      overflow="hidden"
+    >
+      <MotionBox
+        h="100%"
+        w="100%"
+        style={{
+          rotate: spring,
+          scale: 1.45,
+        }}
+      >
+        <Image src={gradientImg} layout="fill" priority />
+      </MotionBox>
+    </Box>
+  );
 };
 
 const Home: NextPage = () => {
   return (
     <ScrollContainer h="100vh">
-      <ScrollSection h="100vh" borderBottom="sm">
+      <ScrollSection h="h-screen" borderBottom="sm">
         <Center h="100%">
           <Stack transform={{ base: "scale(0.75)", md: "none" }}>
             <Box pos="relative" width="24rem" height="24rem">
-              <Image
-                src={gradientImg}
-                layout="fill"
-                priority
-                style={{
-                  borderTopLeftRadius: "12rem",
-                  borderBottomRightRadius: "12rem",
-                }}
-              />
+              <GradientImg />
               <Box
                 w="44rem"
                 pos="absolute"
@@ -102,8 +135,8 @@ const Home: NextPage = () => {
 
 const SectionHeading = ({ heading }: any) => {
   return (
-    <ScrollSection h="400vh" borderBottom="sm">
-      <Flex h="100vh" alignItems="center" pos="sticky" top={0}>
+    <ScrollSection h="h-screen-4" borderBottom="sm">
+      <Flex h="h-screen" alignItems="center" pos="sticky" top={0}>
         <ScrollItem
           keyframes={keyframes.sectionHeading}
           pos="relative"
@@ -126,8 +159,8 @@ const AboutContent = () => {
           {portfolio.about.bio}
         </Text>
       </Box>
-      <Box h="100vh" pos="sticky" top={0} overflow="hidden">
-        <ChakraInfiniteBanner
+      <Box h="h-screen" pos="sticky" top={0} overflow="hidden">
+        <ChakraTicker
           loopDuration={12000}
           direction="y"
           borderLeft="sm"
@@ -142,13 +175,13 @@ const AboutContent = () => {
           >
             <InlineList items={portfolio.about.skills} />
           </Heading>
-        </ChakraInfiniteBanner>
+        </ChakraTicker>
       </Box>
       <Box
         flex={1}
         pos="sticky"
         top={0}
-        h="100vh"
+        h="h-screen"
         p="3xl"
         display={{ base: "none", md: "block" }}
       >
@@ -184,7 +217,7 @@ const AboutContent = () => {
 const ProjectSection = ({ project }: any) => {
   return (
     <ScrollSection borderBottom="sm">
-      <Box h="100vh" pos="relative">
+      <Box h="h-screen" pos="relative">
         <Image layout="fill" priority src={project.img} objectFit="cover" />
       </Box>
       <Flex borderBottom="sm" h="12">
@@ -194,7 +227,7 @@ const ProjectSection = ({ project }: any) => {
           </Heading>
         </Center>
         <Center flex={1} overflow="hidden">
-          <ChakraInfiniteBanner
+          <ChakraTicker
             minW="max-content"
             w="100%"
             loopDuration={12000}
@@ -203,7 +236,7 @@ const ProjectSection = ({ project }: any) => {
             <Heading size="md" mr="3ch" textTransform="lowercase">
               <InlineList items={project.tools} />
             </Heading>
-          </ChakraInfiniteBanner>
+          </ChakraTicker>
         </Center>
         <Button h="100%" borderY="none" borderRight="none">
           View Project
@@ -214,22 +247,8 @@ const ProjectSection = ({ project }: any) => {
           <Heading size="2xl" mb="2xl">
             {project.name}
           </Heading>
-          <Text size="md" mb="2xl">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
-            tristique mattis tellus, quis porttitor lacus rhoncus eu.
-            Pellentesque habitant morbi tristique senectus et netus et malesuada
-            fames ac turpis egestas. Maecenas non libero vel lacus rutrum
-            ultricies quis pretium lectus. Duis volutpat metus ut aliquam
-            dapibus. Phasellus finibus iaculis urna quis porttitor. Maecenas
-            fermentum tristique metus eu vulputate. Sed vel tortor non dolor
-            molestie tempor et nec purus.
-          </Text>
-          <Text size="md" mb="2xl">
-            Phasellus lobortis et mauris eget eleifend. Sed eget ullamcorper
-            felis. Aliquam eu augue ut libero tincidunt efficitur. Proin et
-            lectus eget arcu bibendum aliquet tristique eu dui. Aliquam erat
-            volutpat. Mauris in felis massa. Nunc a eleifend mi, nec hendrerit
-            risus. Curabitur eget feugiat erat. In nec cursus mi.
+          <Text whiteSpace="pre-wrap" size="md" mb="2xl">
+            {project.description}
           </Text>
         </Box>
       </Box>

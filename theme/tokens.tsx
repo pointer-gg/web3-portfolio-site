@@ -121,4 +121,27 @@ export const semanticTokens = {
     md: `2px solid var(--chakra-colors-border-contrast-xl)`,
     lg: `3px solid var(--chakra-colors-border-contrast-xl)`,
   },
+  sizes: {
+    "h-screen": "calc(var(--vh) * 100)",
+    "h-screen-2": "calc(var(--vh) * 200)",
+    "h-screen-3": "calc(var(--vh) * 300)",
+    "h-screen-4": "calc(var(--vh) * 400)",
+    "h-screen-5": "calc(var(--vh) * 500)",
+    "w-screen": "calc(var(--vw) * 100)",
+    "w-screen-2": "calc(var(--vw) * 200)",
+    "w-screen-3": "calc(var(--vw) * 300)",
+    "w-screen-4": "calc(var(--vw) * 400)",
+    "w-screen-5": "calc(var(--vw) * 500)",
+  },
 };
+
+if (typeof window !== "undefined") {
+  const updateViewportUnits = () => {
+    let vh = window.innerHeight * 0.01;
+    let vw = window.innerWidth * 0.01;
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
+    document.documentElement.style.setProperty("--vw", `${vw}px`);
+  };
+  updateViewportUnits();
+  window.addEventListener("resize", updateViewportUnits);
+}
