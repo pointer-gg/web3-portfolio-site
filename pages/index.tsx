@@ -239,7 +239,7 @@ const ProjectSection = ({ project }: any) => {
           </ChakraTicker>
         </Center>
         <LinkButton
-          href="https://pointer.gg"
+          href={project.url}
           h="100%"
           borderY="none"
           borderRight="none"

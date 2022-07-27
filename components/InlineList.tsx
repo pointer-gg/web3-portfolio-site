@@ -12,7 +12,7 @@ const InlineList = ({ items }: InlineListProps) => {
           <span>{item}</span>
           <span>
             &nbsp;
-            <SparkleIcon />
+            {i < items.length - 1 && <SparkleIcon />}
             &nbsp;
           </span>
         </span>

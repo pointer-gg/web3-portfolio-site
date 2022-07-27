@@ -1,4 +1,4 @@
-import profileImg from "./public/profile.png";
+import profileImg from "./public/profile.jpg";
 import stackOverflowImg from "./public/decentralized-stackoverflow.webp";
 import solanaAdsImg from "./public/solana-ads.jpg";
 
@@ -29,7 +29,7 @@ I then decided that enterprise life is not for me and hopped into the world of s
       name: "Decentralized Stack Overflow",
       img: stackOverflowImg,
       tools: ["NextJS", "TypeScript", "Solidity", "Ethereum"],
-      link: "",
+      url: "https://pointer.gg",
       description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tristique mattis tellus, quis porttitor lacus rhoncus eu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas non libero vel lacus rutrum ultricies quis pretium lectus. Duis volutpat metus ut aliquam dapibus. Phasellus finibus iaculis urna quis porttitor. Maecenas fermentum tristique metus eu vulputate. Sed vel tortor non dolor molestie tempor et nec purus.
       
 Phasellus lobortis et mauris eget eleifend. Sed eget ullamcorper felis. Aliquam eu augue ut libero tincidunt efficitur. Proin et lectus eget arcu bibendum aliquet tristique eu dui. Aliquam erat volutpat. Mauris in felis massa. Nunc a eleifend mi, nec hendrerit risus. Curabitur eget feugiat erat. In nec cursus mi.`,
@@ -38,15 +38,14 @@ Phasellus lobortis et mauris eget eleifend. Sed eget ullamcorper felis. Aliquam 
       name: "Ad Slots Via Solana",
       img: solanaAdsImg,
       tools: ["NextJS", "TypeScript", "Rust", "Solana"],
-      link: "",
+      url: "https://pointer.gg",
       description: `In this project I built a smart contract and UI to allow users to purchase ad slots on my blog.
 
 My dev/design blog brings in 1k unique hits per day and provides unique exposure to top developers and designers.
 
 This gives users the opportunity to advertise to a highly educated and passionate community.
 
-Ads can be scheduled through a calendar and purchased in the app, though must be approved before they will display, therefore it's advisable not to schedule an ad to run immediately after purchase.
-      `,
+Ads can be scheduled through a calendar and purchased in the app, though must be approved before they will display, therefore it's advisable not to schedule an ad to run immediately after purchase.`,
     },
   ],
 };
