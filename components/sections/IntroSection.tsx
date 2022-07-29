@@ -16,11 +16,6 @@ const ScrollSection = chakra(Scroll.Section);
 const GradientImg = () => {
   const clock = useScrollClock({ scrollAccelerationFactor: 20 });
   const rotate = useTransform(clock, (time) => time / 100);
-  const spring = useSpring(rotate, {
-    mass: 0.01,
-    stiffness: 100,
-    damping: 7.5,
-  });
   return (
     <Box
       pos="relative"
@@ -35,7 +30,7 @@ const GradientImg = () => {
         h="100%"
         w="100%"
         style={{
-          rotate: spring,
+          rotate: rotate,
           scale: 1.45,
         }}
       >
