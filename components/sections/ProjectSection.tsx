@@ -15,7 +15,7 @@ const ProjectSection = ({ project }: any) => {
       <Box h="h-screen" pos="relative">
         <Image layout="fill" priority src={project.img} objectFit="cover" />
       </Box>
-      <Flex borderBottom="sm" h="12">
+      <Flex borderY="sm" h="12">
         <Center px="md" h="100%" borderRight="sm">
           <Heading size="md" fontWeight="bold">
             Built With
