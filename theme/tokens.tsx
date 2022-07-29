@@ -6,31 +6,31 @@ const BASE_SPACE_UNIT = MD_SPACE_UNIT * 0.8;
 export const semanticTokens = {
   colors: {
     "bg-body": {
-      default: "white",
+      default: "gray.50",
       _dark: "gray.900",
     },
     "bg-body-inverse": {
       default: "gray.900",
-      _dark: "white",
+      _dark: "gray.50",
     },
     "bg-contrast-xs": {
-      default: "rgba(0, 0, 0, 0.025)",
+      default: "rgba(0, 0, 0, 0.0125)",
       _dark: "rgba(255, 255, 255, 0.0125)",
     },
     "bg-contrast-sm": {
-      default: "rgba(0, 0, 0, 0.05)",
+      default: "rgba(0, 0, 0, 0.025)",
       _dark: "rgba(255, 255, 255, 0.025)",
     },
     "bg-contrast-md": {
-      default: "rgba(0, 0, 0, 0.1)",
+      default: "rgba(0, 0, 0, 0.05)",
       _dark: "rgba(255, 255, 255, 0.05)",
     },
     "bg-contrast-lg": {
-      default: "rgba(0, 0, 0, 0.15)",
+      default: "rgba(0, 0, 0, 0.075)",
       _dark: "rgba(255, 255, 255, 0.075)",
     },
     "bg-contrast-xl": {
-      default: "rgba(0, 0, 0, 0.2)",
+      default: "rgba(0, 0, 0, 0.1)",
       _dark: "rgba(255, 255, 255, 0.1)",
     },
     "text-contrast-xs": {

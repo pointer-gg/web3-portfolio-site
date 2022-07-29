@@ -15,24 +15,32 @@ I have considerable experience with solidity and rust and have developed dozens 
 
 I also have considerable experience with nextjs, typescript, and postgres, which has become my stack of choice for most dapps.
 
+Through my career I have dabbled with several avenues of programming including security, data science, and computer vision, though nothing has satisfied me quite like web development.
+
 I was born in Mexico City and moved to the US when I was was 15. Because of this I am fluent in both Spanish and English.
 
 Shortly after moving to the US, I studied computer science at the Rochester Institiute of Technology where I graduated with a 3.95 GPA
 
 After school, I worked as a fullstack engineer at Target for 3 years where I primarily worked on supply chain API's and UI's. 
 
-I then decided that enterprise life is not for me and hopped into the world of startups where I've been enjoying my time working with small teams!`,
+I then decided that enterprise life is not for me and jumped into the startup world where I've been enjoying my time working with small teams!`,
     skills: ["TypeScript", "NextJS", "Rust", "Solidity", "Solana", "Polygon"],
   },
   projects: [
     {
       name: "Decentralized Stack Overflow",
       img: stackOverflowImg,
-      tools: ["NextJS", "TypeScript", "Solidity", "Ethereum"],
+      tools: ["NextJS", "TypeScript", "Solidity", "Polygon"],
       url: "https://pointer.gg",
-      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tristique mattis tellus, quis porttitor lacus rhoncus eu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas non libero vel lacus rutrum ultricies quis pretium lectus. Duis volutpat metus ut aliquam dapibus. Phasellus finibus iaculis urna quis porttitor. Maecenas fermentum tristique metus eu vulputate. Sed vel tortor non dolor molestie tempor et nec purus.
-      
-Phasellus lobortis et mauris eget eleifend. Sed eget ullamcorper felis. Aliquam eu augue ut libero tincidunt efficitur. Proin et lectus eget arcu bibendum aliquet tristique eu dui. Aliquam erat volutpat. Mauris in felis massa. Nunc a eleifend mi, nec hendrerit risus. Curabitur eget feugiat erat. In nec cursus mi.`,
+      description: `In this project, I built a decentralized forum via Polygon that allows users to post and answer programming related questions.
+
+Users can post a question for a small fee at which time they also offer a reward amount to incentivize answers.
+
+Other users can pay a small fee to answer the question and make them eligible for the reward. Those answering must pay a small fee to prevent them from spamming questions with poor quality answers.
+
+For 1 month answers to a question will be hidden, but interested parties can pay a small fee to see the answers and upvote them.
+
+After this month has passed, the user with the most upvoted answer will receive the allocated reward.`,
     },
     {
       name: "Ad Slots Via Solana",
