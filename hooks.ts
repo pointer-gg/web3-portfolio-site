@@ -1,6 +1,11 @@
 import * as React from "react";
 import { useScrollState, useScrollValue } from "scrollex";
-import { useAnimationFrame, useMotionValue, useTransform } from "framer-motion";
+import {
+  useAnimationFrame,
+  useMotionValue,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 
 type ScrollStatus = "up" | "down" | "static";
 type ScrollDirection = "up" | "down";
@@ -63,8 +68,11 @@ export const useScrollClock = ({ scrollAccelerationFactor = 10 } = {}) => {
     reverse: lastScrollDirection === "up",
   });
 
-  return useTransform(
+  const scrollClock = useTransform(
     [clock, scrollPosition as any],
     ([time, pos]: number[]) => time + (pos || 0) * scrollAccelerationFactor
   );
+
+  // Smooth out motion with a spring
+  return useSpring(scrollClock, { mass: 0.05, stiffness: 100, damping: 10 });
 };
