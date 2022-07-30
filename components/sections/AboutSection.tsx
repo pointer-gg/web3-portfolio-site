@@ -11,7 +11,7 @@ const ScrollSection = chakra(Scroll.Section);
 
 const AboutSection = () => {
   return (
-    <ScrollSection borderBottom="sm">
+    <ScrollSection id="about" borderBottom="sm">
       <Flex>
         <Box p="3xl" flex={1}>
           <Text whiteSpace="pre-wrap" size="md">
