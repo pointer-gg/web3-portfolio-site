@@ -42,7 +42,7 @@ const GradientImg = () => {
 
 const IntroSection = () => {
   return (
-    <ScrollSection h="h-screen" borderBottom="sm">
+    <ScrollSection id="intro-section" h="h-screen" borderBottom="sm">
       <Box pos="absolute" top="md" right="md">
         <ColorModeButton />
       </Box>
